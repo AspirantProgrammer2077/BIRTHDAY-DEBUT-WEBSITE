@@ -1,0 +1,66 @@
+@charset "UTF-8";
+/* Bubblestyle.css - floating bubbles background */
+
+/* ensure the bubble layer does not capture pointer events so links/buttons still work */
+.bubbles,
+.bubbles .container,
+.bubbles .bubble {
+	pointer-events: none;
+}
+
+/* Bubble layer: fixed and behind main content */
+.bubbles {
+	position: fixed;
+	inset: 0;               /* top:0; right:0; bottom:0; left:0 */
+	pointer-events: none;
+	z-index: 0;             /* keep behind content; give wrapper a higher z-index */
+	overflow: hidden;
+}
+
+/* Container holds bubble elements positioned absolutely inside the fixed layer */
+.bubbles .container {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+/* Individual bubbles */
+.bubbles .bubble {
+	position: absolute;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background: rgba(25, 49, 207, 0.2);
+	border: 1px solid rgba(25, 49, 207, 0.2);
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
+	box-shadow: rgba(0, 0, 0, 0.09) 0 -20px 25px 0 inset,
+		rgba(0, 0, 0, 0.09) 0 -40px 30px 0 inset,
+		rgba(0, 0, 0, 0.09) 0 -80px 40px 0 inset,
+		rgba(0, 0, 0, 0.09) 0 2px 1px,
+		rgba(0, 0, 0, 0.09) 0 4px 2px,
+		rgba(0, 0, 0, 0.09) 0 8px 4px,
+		rgba(0, 0, 0, 0.09) 0 16px 8px,
+		rgba(0, 0, 0, 0.09) 0 32px 16px;
+	bottom: -150px;
+	animation: floating 20s cubic-bezier(0.6, 0.8, 0.9, 0.35) infinite;
+	z-index: 0;
+}
+
+/* positions / sizes for each bubble */
+.bubbles .bubble:nth-child(1) { background-color: #F7A1C4; left: 30%; width: 80px; }
+.bubbles .bubble:nth-child(2) { background-color: #FFD1DC; left: 5%;  width: 90px; animation-delay: 4s; animation-duration: 16s; }
+.bubbles .bubble:nth-child(3) { background-color: #FADADD; left: 70%; width: 70px; animation-delay: 4s; }
+.bubbles .bubble:nth-child(4) { background-color: #E6C77D; left: 40%; width: 60px; animation-delay: 6s; }
+.bubbles .bubble:nth-child(5) { background-color: #FFF6EC; left: 65%; width: 80px; }
+.bubbles .bubble:nth-child(6) { background-color: #F4B6C2; left: 75%; width: 110px; animation-delay: 12s; }
+.bubbles .bubble:nth-child(7) { background-color: #E8AABE; left: 10%; width: 150px; animation-delay: 8s; }
+.bubbles .bubble:nth-child(8) { background-color: #FFE4E1; left: 50%; width: 100px; animation-delay: 6s; animation-duration: 24s; }
+.bubbles .bubble:nth-child(9) { background-color: #D4AF37; left: 20%; width: 80px; animation-delay: 22s; }
+.bubbles .bubble:nth-child(10){ background-color: #FDE2E4; left: 85%; width: 150px; animation-duration: 14s; }
+
+@keyframes floating {
+	0%   { transform: translateY(0) rotate(0deg); }
+	100% { transform: translateY(-1000px) rotate(360deg); }
+}
